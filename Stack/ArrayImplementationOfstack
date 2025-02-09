@@ -1,0 +1,91 @@
+#include<iostream>
+using namespace std;
+
+int MAX_SIZE = 8;
+int stack[8];
+int top= -1;
+
+int isempty()
+{
+
+    if(top==-1)
+        return 1;
+    else 
+        return 0;
+}
+
+void peek()
+{
+    if(!isempty())
+    {
+        cout<<"Data at top is";
+        cout<<stack[top]<<endl;
+    }
+    else{
+        cout<<"The stack is empty";
+    }
+}
+
+void push(int data)
+{
+    if(top == MAX_SIZE-1)
+    {
+        cout<<"Stack is full cannot push"<<endl<<endl;
+    }
+    else{
+        top++;
+        stack[top]= data;
+        cout<<"Data pushed sucessful at TOS"<<endl<<endl;
+    }
+}
+
+void pop()
+{
+    if(!isempty())
+    {
+        
+        cout<<"Data of the top deleted"<<stack[top]<<endl<<endl;
+        top--;
+    }
+    else{
+        cout<<"stack is empty"<<endl;
+    }
+}
+
+
+
+
+int main()
+{
+    int p =1;
+    while(p==1){
+    int choice;
+    cout<<"-----------------------------------\n";
+    cout<<"choose \n\t1:Push data\n\t2:Peek data\n\3:tDelete data4:to exit the program"<<endl;
+    cin>>choice;
+    cout<<"-----------------------------------\n";
+    switch (choice)
+    {    
+    case 1:
+        int x;
+        cout<<"Enter data to pushed"<<endl;
+        cin>>x;
+        push(x);
+        break;
+    case 2:
+
+        peek();
+        break;
+    case 3:
+        pop();
+        break;
+    case 4:
+        p=0;
+        cout<<"Terminated the program"<<endl;
+        break;
+    default:
+        cout<<"invalid choice"<<endl;
+    }
+    }
+    return 0;
+}
