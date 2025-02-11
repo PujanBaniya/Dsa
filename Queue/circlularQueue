@@ -1,0 +1,112 @@
+#include<iostream>
+#define MAX 5
+using namespace std;
+
+template<class T>
+
+class Queue{
+private:
+    int front,rare,counter;
+    T arr[MAX];
+public:
+    Queue()
+    {
+        front = -1;
+        rare = -1;
+        counter= 0;
+    }
+    //check for empty
+    bool isEmpty()
+    {
+        return(counter==0);
+    }
+    //check is full
+    bool isFull()
+    {
+        return(counter == MAX);
+    }
+
+    void enQueue(T data)
+    {
+        if(!isFull()){
+        if(front ==-1)
+        front = 0;
+        rare = (rare+1)%MAX;
+        arr[rare]= data;
+        counter++;
+    
+    
+        }
+
+      else{
+        cout<<"Overflow"<<endl;
+      }
+        }
+
+    void deQueue()
+    {
+        if(!isEmpty())
+        {
+            cout<<"Dequeued "<<arr[front]<<endl;
+            front = (front+1)%MAX;
+            counter --;
+        }
+        else 
+        {
+            cout<<"Queue underflow"<<endl;
+        }
+    }
+
+
+    void display()
+    {
+        if(!isEmpty())
+        {
+            cout<<"Queue is";
+            for (int i=0;i<counter;i++)
+            {
+                int index = (front+i)%MAX;
+                cout<<arr[index]<<"\t";
+            }
+            cout<<"\nFront index"<<front<<"| RearIndex"<<rare<<"|Length"<<counter<<endl;
+            cout<<"======================================================================";
+        }
+        else
+        cout<<"Empty Queue"<<endl;
+    }
+
+
+};
+
+int main()
+{
+    Queue<int> que;
+    int choice, val;
+    int a=1;
+    while(a==1)
+    {
+    cout<<"Press\n1:Enque\n2:Deque\n3:Display\n4:exit"<<endl;
+    cin>> choice;
+    switch (choice)
+    {
+    case 1:
+        cout<<"Enter value to enque"<<endl;
+        cin>>val;
+        que.enQueue(val);
+        break;
+    case 2:
+        que.deQueue();
+    break;
+    case 3:
+        que.display();
+    break;
+    case 4:
+        a=7;
+
+    default:
+    cout<<"invalid choixece";
+    break;
+    }
+
+    }
+}
